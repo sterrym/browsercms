@@ -144,7 +144,7 @@ class Attachment < ActiveRecord::Base
   end  
   
   def self.find_live_by_file_path(file_path)
-    Attachment.published.not_archived.first(:conditions => {:file_path => file_path})
+    self.published.not_archived.first(:conditions => {:file_path => file_path})
   end  
   
   #----- Instance Methods ------------------------------------------------------
@@ -180,7 +180,7 @@ class Attachment < ActiveRecord::Base
   end
   
   def full_file_location
-    File.join(Attachment.storage_location, file_location)
+    File.join(self.class.storage_location, file_location)
   end
 
   # Forces this record to be changed, even if nothing has changed

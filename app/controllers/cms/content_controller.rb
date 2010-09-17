@@ -102,7 +102,7 @@ class Cms::ContentController < Cms::ApplicationController
     unless ext.blank?
       
       #Check access to file
-      @attachment = Attachment.find_live_by_file_path(@path)
+      @attachment = ::Attachment.find_live_by_file_path(@path)
       if @attachment
         raise Cms::Errors::AccessDenied unless current_user.able_to_view?(@attachment)
 

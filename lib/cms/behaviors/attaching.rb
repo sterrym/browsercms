@@ -159,7 +159,7 @@ module Cms
 
         def after_as_of_version
           if attachment_id && attachment_version
-            self.attachment = Attachment.find(attachment_id).as_of_version(attachment_version)
+            self.attachment = ::Attachment.find(attachment_id).as_of_version(attachment_version)
           end
         end
 
